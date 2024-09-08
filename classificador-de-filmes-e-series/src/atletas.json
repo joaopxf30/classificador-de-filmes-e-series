@@ -1,0 +1,100 @@
+{
+    "atletas": [
+        {
+            "id": "182d9368-f0c4-487f-b663-10e7c040c4cb",
+            "nome": "João Pedro Xavier Freitas",
+            "idade": 27,
+            "altura": 1.67,
+            "peso": 70,
+            "treinos": [
+                {
+                    "esportista": "João Pedro Xavier Freitas",
+                    "id": "0a30d609-3635-4676-b82f-0a8a1901eba4",
+                    "descricao": "Natação 24/06/2024",
+                    "data": "24/06/2024",
+                    "esporte": "Natação",
+                    "duracao": "00h:55m:40s",
+                    "calorias": 320,
+                    "bpm": 180
+                },
+                {
+                    "esportista": "João Pedro Xavier Freitas",
+                    "id": "f7a4158f-e666-45b5-b8ee-ac211f873121",
+                    "descricao": "Natação 26/06/2024",
+                    "data": "26/06/2024",
+                    "esporte": "Natação",
+                    "duracao": "",
+                    "calorias": 320,
+                    "bpm": 180
+                },
+                {
+                    "esportista": "João Pedro Xavier Freitas",
+                    "id": "aeb1f8d8-e557-45bb-b26f-b298e55edcb7",
+                    "descricao": "Corrida 28/06/2024",
+                    "data": "28/06/2024",
+                    "esporte": "Corrida",
+                    "duracao": "",
+                    "calorias": 320,
+                    "bpm": 180
+                }
+            ]
+        },
+        {
+            "id": "def03623-d763-4335-b9c7-d7aae56c84bd",
+            "nome": "Helen Maia Vicentini",
+            "idade": 30,
+            "altura": 1.70,
+            "peso": 60,
+            "treinos": [
+                {
+                    "esportista": "Helen Maia Vicentini",
+                    "id": "518a0baa-7e07-424b-a5da-b4311d0b7ea1",
+                    "descricao": "Natação 08/07/2024",
+                    "data": "08/07/2024",
+                    "esporte": "Natação",
+                    "duracao": "00h:40m:40s",
+                    "calorias": 220,
+                    "bpm": 150
+                }                
+            ]
+        },
+        {
+            "id": "8b9907d0-9d37-47cd-a9d9-2388c6ae934e",
+            "nome": "Alexandre Neves",
+            "idade": 34,
+            "altura": 1.79,
+            "peso": 83,
+            "treinos": [
+                {
+                    "esportista": "Alexandre Neves",
+                    "id": "921706dc-10ac-4329-9000-28cbf554aa2d",
+                    "descricao": "Futebol 09/07/2024",
+                    "data": "09/07/2024",
+                    "esporte": "Futebol",
+                    "duracao": "01h:20m:00s",
+                    "calorias": 400,
+                    "bpm": 180
+                }      
+            ]
+        },
+        {
+            "id": "0c2ff813-8ced-4767-bdee-ea05bdde0e13",
+            "nome": "Mariana Salgueiro",
+            "idade": 27,
+            "altura": 1.52,
+            "peso": 52,
+            "treinos": [
+                {
+                    "esportista": "Mariana Salgueiro",
+                    "id": "4c6d7b51-e0b6-45dc-a000-bd660e3e4229",
+                    "descricao": "Dança 10/07/2024",
+                    "data": "10/07/2024",
+                    "esporte": "Dança",
+                    "duracao": "00h:52m:22s",
+                    "calorias": 210,
+                    "bpm": 164
+                }    
+            ]
+        }                   
+    ]
+}
