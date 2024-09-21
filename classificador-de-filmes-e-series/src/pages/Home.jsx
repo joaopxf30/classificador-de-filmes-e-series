@@ -1,44 +1,42 @@
-import { useMemo, useState } from "react"
-import {v4 as uuidv4} from 'uuid';
+import { useMemo, useState, useEffect } from "react"
+import { getAudiovisuals, addAudiovisual, removeAudiovisual } from "../api/Audiovisual";
 import Item from "../components/Item"
 import banner from "../assets/movie-banner.png"
-import atletasData from "../atletas.json"
 import SearchBar from "../components/SearchBar"
 import SubmitBar from "../components/SubmitBar"
-import PersonIcon from "@mui/icons-material/Person";
+import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
+
 
 export default function HomePage() {
-  const [atletasList, setAtletasList] = useState(atletasData.atletas)
-  const [queryNome, setQueryNome] = useState("")
+  const [audiovisualList, setAudiovisualList] = useState([]);
+  const [queryTitle, setQueryTitle] = useState("");
 
-  const filteredAtletasNome = useMemo(() => {
-    return atletasList.filter(atelta => {
-    return atelta.nome.toLowerCase().includes(queryNome.toLowerCase())
-  })}, [atletasList, queryNome])
+  useEffect(() => {
+    getAudiovisuals()
+      .then(audiovisuals => {
+        setAudiovisualList(audiovisuals)
+      }
+  )}, [])
 
-  const geraNovoAtleta = (nomeAtleta) => {
-    return ({
-      "id": uuidv4(),
-      "nome": nomeAtleta,
-      "idade": null,
-      "altura": null,
-      "pesos": null,
-      "treinos": []
-    })
-  }
+  const addAudiovisualItem = async(imdbId, title, year) => {
+    addAudiovisual(imdbId, title, year)
+      .then(audiovisual => {
+        setAudiovisualList(currentList => [...currentList, audiovisual])
+  })}
 
-  const addAtleta = (newAtleta) => {
-    setAtletasList(currentList =>
-      [...currentList, geraNovoAtleta(newAtleta)]
-  )}
-
-  const deleteAtleta = (index) => {
-    setAtletasList(currentList => 
+  const removeAudiovisualItem = (index, id) => {
+    removeAudiovisual(id)
+    setAudiovisualList(currentList => 
       currentList.filter((_, i) => i !== index)
   )}
 
+  const filteredAudiovisualList = useMemo(() => {
+    return audiovisualList.filter(audiovisual => {
+    return audiovisual.title.toLowerCase().includes(queryTitle.toLowerCase())
+  })}, [audiovisualList, queryTitle])
+
   return (
-    <div className="esportistas-registrados">
+    <div className="audiovisuals">
 
       <section className="banner">
         <img src={banner} alt="Banner"/>
@@ -51,28 +49,27 @@ export default function HomePage() {
       <section className="container-add-search">
         <div className="container-search-bar">
           <SearchBar 
-            textPlaceholder={"esportista"} 
-            action={setQueryNome} 
-            query={queryNome}
+            textPlaceholder={"movie or series"} 
+            action={setQueryTitle} 
+            query={queryTitle}
           />
         </div>
         <div className="container-submit-bar">
           <SubmitBar 
-            textPlaceholder={"esportista"} 
-            action={addAtleta}
+            action={addAudiovisualItem}
           />
         </div>
       </section>
 
-      <section className="main-athletes">
-        {filteredAtletasNome.map((info, index) => (
+      <section className="watched-audiovisuals">
+        {filteredAudiovisualList.map((info, index) => (
           <Item 
             info={info}
-            label={info.nome}
-            IconComponent={PersonIcon}
-            routeURL={`/esportista/${info.nome}`}
+            label={`${info.title} (${info.year})`}
+            IconComponent={LocalMoviesIcon}
+            routeURL={`/audiovisual/${info.id}`}
             key={index}
-            deleteAction={() => deleteAtleta(index)}
+            removeAction={() => removeAudiovisualItem(index, info.id)}
           />
         ))}
       </section>

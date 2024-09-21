@@ -9,7 +9,7 @@ export default function SearchBar({ textPlaceholder, action, query }) {
         value={query} 
         onChange={e => action(e.target.value)} 
         type="search" 
-        placeholder={`Busca por ${textPlaceholder}...`}
+        placeholder={`Search for ${textPlaceholder}...`}
       />
       <FaSearch className="search-icon"/>
     </section>
