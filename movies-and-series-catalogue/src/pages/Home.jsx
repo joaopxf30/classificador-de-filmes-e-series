@@ -5,6 +5,7 @@ import banner from "../assets/movie-banner.png"
 import SearchBar from "../components/SearchBar"
 import SubmitBar from "../components/SubmitBar"
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
+import LiveTvIcon from '@mui/icons-material/LiveTv';
 
 
 export default function HomePage() {
@@ -16,7 +17,7 @@ export default function HomePage() {
       .then((audiovisuals) => {
         setAudiovisualList(audiovisuals)
       }
-  )}, [audiovisualList])
+  )}, [])
 
   const addAudiovisualItem = async(imdbId, title, year) => {
     addAudiovisual(imdbId, title, year)
@@ -28,10 +29,10 @@ export default function HomePage() {
       })
   }
 
-  const removeAudiovisualItem = (index, id) => {
+  const removeAudiovisualItem = (id) => {
     removeAudiovisual(id)
     setAudiovisualList(currentList => 
-      currentList.filter((_, i) => i !== index)
+      currentList.filter(item => item.id !== id)
   )}
 
   const filteredAudiovisualList = useMemo(() => {
@@ -39,9 +40,14 @@ export default function HomePage() {
     return audiovisual.title.toLowerCase().includes(queryTitle.toLowerCase())
   })}, [audiovisualList, queryTitle])
 
+  const useSpecificIcon = (type) => {
+    console.log(type)
+    return type === 'movie' ? LocalMoviesIcon : LiveTvIcon;
+  }
+
   return (
     <div className="audiovisuals">
-
+      
       <section className="banner">
         <img src={banner} alt="Banner"/>
       </section>
@@ -66,14 +72,14 @@ export default function HomePage() {
       </section>
 
       <section className="watched-audiovisuals">
-        {filteredAudiovisualList.map((info, index) => (
+        {filteredAudiovisualList.map((info) => (
           <Item 
             info={info}
             label={`${info.title} (${info.year})`}
-            IconComponent={LocalMoviesIcon}
+            IconComponent={useSpecificIcon(info.type)}
             routeURL={`/audiovisual/${info.id}`}
-            key={index}
-            removeItem={() => removeAudiovisualItem(index, info.id)}
+            key={info.id}
+            removeItem={() => removeAudiovisualItem(info.id)}
           />
         ))}
       </section>

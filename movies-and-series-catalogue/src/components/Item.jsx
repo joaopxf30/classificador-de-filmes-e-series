@@ -11,7 +11,7 @@ import { useState, useEffect, useRef } from "react";
 import { addRating, changeRating, removeRating } from "../api/Rating";
 
 
-export default function Item({ info, complementInfo, label, IconComponent, routeURL, removeItem }) {
+export default function Item({ info, label, IconComponent, routeURL, removeItem }) {
   const [rating, setRating] = useState(info.rating)
   const previousRating = useRef(info.rating)
   const navigate = useNavigate()
@@ -39,7 +39,6 @@ export default function Item({ info, complementInfo, label, IconComponent, route
     navigate(routeURL, { 
       state: {
         info: info,
-        complementInfo: complementInfo
       }
     })
   }
