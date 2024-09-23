@@ -16,7 +16,7 @@ export default function HomePage() {
       .then((audiovisuals) => {
         setAudiovisualList(audiovisuals)
       }
-  )}, [])
+  )}, [audiovisualList])
 
   const addAudiovisualItem = async(imdbId, title, year) => {
     addAudiovisual(imdbId, title, year)
