@@ -13,16 +13,20 @@ export default function HomePage() {
 
   useEffect(() => {
     getAudiovisuals()
-      .then(audiovisuals => {
+      .then((audiovisuals) => {
         setAudiovisualList(audiovisuals)
       }
   )}, [])
 
   const addAudiovisualItem = async(imdbId, title, year) => {
     addAudiovisual(imdbId, title, year)
-      .then(audiovisual => {
+      .then((audiovisual) => {
         setAudiovisualList(currentList => [...currentList, audiovisual])
-  })}
+      })
+      .catch((error) => {
+        alert(error.message);
+      })
+  }
 
   const removeAudiovisualItem = (index, id) => {
     removeAudiovisual(id)
@@ -69,7 +73,7 @@ export default function HomePage() {
             IconComponent={LocalMoviesIcon}
             routeURL={`/audiovisual/${info.id}`}
             key={index}
-            removeAction={() => removeAudiovisualItem(index, info.id)}
+            removeItem={() => removeAudiovisualItem(index, info.id)}
           />
         ))}
       </section>
