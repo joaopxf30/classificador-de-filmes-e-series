@@ -13,14 +13,14 @@ export default function AudiovisualPage() {
   }
 
   return (
-    <div className="treinos-registrados">
+    <div className="audiovisual-page">
 
       <section className="banner">
         <img src={banner} alt="Banner"/>
       </section>
 
       <section className="reference">
-        <div className="reference--page">
+        <div className="reference-audiovisual">
           {audiovisual.title} ({audiovisual.year})
         </div>
         <div className="rollback">
@@ -34,7 +34,7 @@ export default function AudiovisualPage() {
           <span>Return</span>
         </div>
       </section>
-      <section className="information--container">
+      <section className="container-information">
       {audiovisual.genre && (
         <div className="information">
           <b>Genre</b>: {audiovisual.genre}

@@ -1,6 +1,6 @@
 import { useRef } from "react"
 import Button from "./Button"
-import PersonAddIcon from '@mui/icons-material/PersonAddAltSharp';
+import AddIcon from '@mui/icons-material/Add';
 
 export default function SubmitBar( { action } ) {
   const inputImdbId = useRef()
@@ -23,13 +23,15 @@ export default function SubmitBar( { action } ) {
 
   return (
     <section className="submit-bar">
-      <form onSubmit={onSubmit} className="submit-form">
+      <form onSubmit={onSubmit} className="submit-form" id="submit-form-1">
         <input ref={inputImdbId} placeholder={"IMDb Id..."} className="imdb-id-input"/>
+          <Button IconComponent={AddIcon} type="submit" color="black" id="submit-button" size="medium"/>
+      </form>
+      <form onSubmit={onSubmit} className="submit-form" id="submit-form-2">
         <input ref={inputTitle} placeholder={"Title..."} className="title-input"/>
         <input ref={inputYear} placeholder={"Year..."} className="year-input"/>
-          <Button IconComponent={PersonAddIcon} type="submit" color="black" id="submit-button" size="inherit"/>
+          <Button IconComponent={AddIcon} type="submit" color="black" id="submit-button" size="medium"/>
       </form>
     </section>
-  )
-  
+  ) 
 }

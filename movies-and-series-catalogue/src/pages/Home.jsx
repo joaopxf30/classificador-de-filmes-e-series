@@ -41,22 +41,21 @@ export default function HomePage() {
   })}, [audiovisualList, queryTitle])
 
   const useSpecificIcon = (type) => {
-    console.log(type)
-    return type === 'movie' ? LocalMoviesIcon : LiveTvIcon;
+    return type === "movie" ? LocalMoviesIcon : LiveTvIcon;
   }
 
   return (
-    <div className="audiovisuals">
+    <div className="home-page">
       
       <section className="banner">
         <img src={banner} alt="Banner"/>
       </section>
 
       <section className="reference">
-        <div className="reference--page">HOME</div>
+        <div className="reference-home">HOME</div>
       </section>
 
-      <section className="container-add-search">
+      <section className="container-search-submit">
         <div className="container-search-bar">
           <SearchBar 
             textPlaceholder={"movie or series"} 

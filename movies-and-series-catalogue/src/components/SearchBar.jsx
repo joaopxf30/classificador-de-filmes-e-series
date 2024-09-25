@@ -1,4 +1,4 @@
-import { FaSearch } from "react-icons/fa"
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function SearchBar({ textPlaceholder, action, query }) {
     
@@ -11,7 +11,7 @@ export default function SearchBar({ textPlaceholder, action, query }) {
         type="search" 
         placeholder={`Search for ${textPlaceholder}...`}
       />
-      <FaSearch className="search-icon"/>
+        <SearchIcon className="search-icon"/>
     </section>
   )
   
