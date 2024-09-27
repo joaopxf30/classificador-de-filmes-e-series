@@ -22,41 +22,41 @@ npm install
 ```
 
 3. Execute the following command to run the application in development mode:
+
 ```
 npm start
 ```
 
 The Home page will be available at http://localhost:5173/
 
+___
+## Additional depenencies
+
+Despite of the dependencies retrieved from `create vite@latest`, this app also relies on:
+* react-router-dom (verion >= 6.24.0): to create routes in a SPA;
+* @mui/material (version >= 5.12.20): to get components;
+* @mui/icons-material (version >= 5.12.20): to use customizable icons.
 
 ___
-## Principais dependências adicionais utilizadas
-Além das próprias dependências disponibilizadas no build, a aplicação constantemente recorre a:
-
-* react-router-dom (versão >= 6.24.0): realiza o roteamento dentro da SPA, permitindo ainda a troca de informação entre as entidades;
-* @mui/material (versão >= 5.12.20): disponibiliza componentes;
-* @mui/icons-material (versão >= 5.12.20): disponibiliza ícones customizáveis.
+## Workflow
 
 ___
-## Fluxo de dados no roteamento
-É importante destacar que as informações visualizadas ao executar a aplicação não estão geradas a partir de um servidor de dados. São oriundas de um mock pelo arquivo `atletas.json`. Logo, as adições e alterações feitas não são persistidas.
+## External API
 
-A comunicação entre as entidades da SPA ocorre seguindo o seguinte fluxo:
+The audiovisual content comes indeed from the OMDb API. The interaction with OMDb happens actually in the back-end of the project. Whenever a POST request is done for an Audiovisual entity, the server performs a GET request to the OMDb API to retrieve the data. The server (back-end) sends here at most 3 parameters:
++ Required:
+  + `apikey` -> `972b4e0f` (retrieved after a register)
+  + `i` -> IMDb Id (first option)
+  + `t` -> title from the movie or series (second option)
++ Optional:
+  + `y` -> year from the movie or series (when title is used)
 
-<p align="center"> Home ↔ Esportista ↔ Treino </>
-
-* A página Home sempre carrega todo o conteúdo de `atletas.json` e renderiza apenas o nome dos esportistas;
-* O roteamento Home → Esportista leva somente os dados filtrados do esportista específico com os treinos associados;
-* A página Esportista renderiza os dados do esportista e a descrição dos treinos associados;
-* O roteamento Esportista → Treino leva os mesmos dados do roteamento Home → Esportista;
-* A página Treino renderiza somente os dados do treino específico;
-* O roteamento Treino → Esporista retorna todos os dados do roteamento Esportista → Treino;
-* O roteamento Esportista → Home não realiza fluxo de dados do JSON.
+For further information about it, check https://www.omdbapi.com.
 
 ___
 ## Run with Docker
 
-Before proceeding, it is important to have Docker installed.
+Before proceeding, it is important to have Docker installed: https://docs.docker.com/engine/install/.
 
 ### Build the image
 Open the terminal in `.movies-and-series-catalogue`. The `Dockerfile` is there.
@@ -73,13 +73,14 @@ docker images
 ````
 
 A similar response should be seen in a good scenario:
+
 ```
 REPOSITORY                              TAG       IMAGE ID       CREATED          SIZE
 movies-and-series-catalogue-front-end   latest    6c89d491d22a   25 minutes ago   676MB
 ```
 
 #### Details of the image
-This image provides a virtualized environment with all the dependencies from the `requirements.txt` and `node:18-alpine`.
+This image provides a virtualized environment with all the dependencies from the `package.josn` and `node:18-alpine`.
 
 ### Run a container from the image
 Now, execute the following to create a container from the image:
