@@ -16,8 +16,11 @@ export default function HomePage() {
     getAudiovisuals()
       .then((audiovisuals) => {
         setAudiovisualList(audiovisuals)
-      }
-  )}, [])
+      })
+      .catch((error) => {
+        console.error("Error:", error)
+      });
+  }, [])
 
   const addAudiovisualItem = async(imdbId, title, year) => {
     addAudiovisual(imdbId, title, year)
@@ -36,6 +39,7 @@ export default function HomePage() {
   )}
 
   const filteredAudiovisualList = useMemo(() => {
+    console.log("what?")
     return audiovisualList.filter(audiovisual => {
     return audiovisual.title.toLowerCase().includes(queryTitle.toLowerCase())
   })}, [audiovisualList, queryTitle])

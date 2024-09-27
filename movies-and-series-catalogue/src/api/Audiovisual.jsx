@@ -11,7 +11,7 @@ export const getAudiovisuals = async () => {
     return data.audiovisuals
   })
   .catch((error) => {
-    console.error("Error:", error)
+    throw new Error(error)
   });
 };
 
