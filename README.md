@@ -38,7 +38,8 @@ Despite of the dependencies retrieved from `create vite@latest`, this app also r
 * @mui/icons-material (version >= 5.12.20): to use customizable icons.
 
 ___
-## Workflow
+## Project's overview
+![](/src/assets/workflow.svg)
 
 ___
 ## External API
