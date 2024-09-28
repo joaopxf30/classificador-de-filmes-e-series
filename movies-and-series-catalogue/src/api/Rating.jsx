@@ -35,7 +35,7 @@ export const changeRating = async (audiovisualId, rating) => {
   .then((response) => response.json())
   .then((data) => {
     console.log(`The rating has been changed to ${data.rating}`)
-    return data
+    return data.rating
   })
   .catch((error) => {
     console.error("Error:", error);

@@ -11,7 +11,7 @@ import LiveTvIcon from '@mui/icons-material/LiveTv';
 export default function HomePage() {
   const [audiovisualList, setAudiovisualList] = useState([]);
   const [queryTitle, setQueryTitle] = useState("");
-
+  
   useEffect(() => {
     getAudiovisuals()
       .then((audiovisuals) => {
@@ -38,8 +38,15 @@ export default function HomePage() {
       currentList.filter(item => item.id !== id)
   )}
 
+  const updateNewRating = (id, rating) => {
+    setAudiovisualList((currentList) => 
+      currentList.map((item) =>
+        item.id === id ? { ...item, rating: rating } : item
+      )
+    )
+  }
+
   const filteredAudiovisualList = useMemo(() => {
-    console.log("what?")
     return audiovisualList.filter(audiovisual => {
     return audiovisual.title.toLowerCase().includes(queryTitle.toLowerCase())
   })}, [audiovisualList, queryTitle])
@@ -74,19 +81,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="watched-audiovisuals">
-        {filteredAudiovisualList.map((info) => (
-          <Item 
-            info={info}
-            label={`${info.title} (${info.year})`}
-            IconComponent={useSpecificIcon(info.type)}
-            routeURL={`/audiovisual/${info.id}`}
-            key={info.id}
-            removeItem={() => removeAudiovisualItem(info.id)}
-          />
-        ))}
-      </section>
-
+      {filteredAudiovisualList.length > 0 ? (
+        <section className="watched-audiovisuals">
+          {filteredAudiovisualList.map((info) => (
+            <Item 
+              info={info}
+              label={`${info.title} (${info.year})`}
+              IconComponent={useSpecificIcon(info.type)}
+              routeURL={`/audiovisual/${info.id}`}
+              updateNewRating={updateNewRating}
+              key={info.id}
+              removeItem={() => removeAudiovisualItem(info.id)}
+            />
+          ))}
+        </section>
+      ) : (
+        <section className="empty-audiovisuals">
+          <div>There are no movies or series!</div>
+        </section>
+      )}
+      
     </div>
   )
 }

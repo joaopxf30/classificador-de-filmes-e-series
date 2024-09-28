@@ -203,6 +203,21 @@ header {
   margin: 7px auto;
 }
 
+.empty-audiovisuals {
+  background-color: rgba(100, 0, 0, 0.485);
+  border: 2px solid #3e0000;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 300px;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  margin: auto;
+}
+
 /* Inputs */
 
 input {

@@ -11,13 +11,12 @@ import { useState, useEffect, useRef } from "react";
 import { addRating, changeRating, removeRating } from "../api/Rating";
 
 
-export default function Item({ info, label, IconComponent, routeURL, removeItem }) {
+export default function Item({ info, label, IconComponent, routeURL, updateNewRating, removeItem }) {
   const [rating, setRating] = useState(info.rating)
   const previousRating = useRef(info.rating)
   const navigate = useNavigate()
 
   useEffect (() => {
-    console.log(previousRating.current, rating)
     if (previousRating.current === rating) {
       return
     }
@@ -33,6 +32,7 @@ export default function Item({ info, label, IconComponent, routeURL, removeItem 
       changeRating(info.id, rating)
       previousRating.current = rating;
     }
+    updateNewRating(info.id, rating)
   }, [rating])
 
   const navigateAction = () => {
