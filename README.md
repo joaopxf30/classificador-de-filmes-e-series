@@ -44,7 +44,7 @@ ___
 ___
 ## External API
 
-The audiovisual content comes indeed from the OMDb API. The interaction with OMDb happens actually in the back-end of the project. Whenever a POST request is done for an Audiovisual entity, the server performs a GET request to the OMDb API to retrieve the data. The server (back-end) sends here at most 3 parameters:
+The audiovisual content comes indeed from the OMDb API. The interaction with OMDb happens actually in the back-end of the project. Whenever a POST request is done for an Audiovisual entity, the server performs a GET request to the OMDb API to retrieve the data. The client (back-end) sends here at most 3 parameters:
 + Required:
   + `apikey` -> `972b4e0f` (retrieved after a register)
   + `i` -> IMDb Id (first option)
