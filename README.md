@@ -39,7 +39,7 @@ Despite of the dependencies retrieved from `create vite@latest`, this app also r
 
 ___
 ## Project's overview
-![](/src/assets/workflow.svg)
+![overview](movies-and-series-catalogue/src/assets/overview.svg)
 
 ___
 ## External API
