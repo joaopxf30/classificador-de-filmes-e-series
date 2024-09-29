@@ -38,7 +38,7 @@ Despite of the dependencies retrieved from `create vite@latest`, this app also r
 * @mui/icons-material (version >= 5.12.20): to use customizable icons.
 
 ___
-## Project's overview
+## Project overview
 ![overview](movies-and-series-catalogue/src/assets/overview.svg)
 
 ___
